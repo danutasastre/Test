@@ -1,0 +1,18 @@
+run("HeLa Cells (1.3M, 48-bit RGB)");
+run("Split Channels");
+setOption("ScaleConversions", true);
+run("8-bit");
+run("8-bit");
+run("Smooth");
+run("Smooth");
+run("Gaussian Blur...", "sigma=2");
+setAutoThreshold("Triangle dark no-reset");
+//run("Threshold...");
+//setThreshold(24, 238);
+setOption("BlackBackground", true);
+run("Convert to Mask");
+run("Close");
+run("Set Measurements...", "area mean min centroid display redirect=C3-hela-cells.tif decimal=3");
+run("Analyze Particles...", "  show=Outlines display exclude clear add");
+selectWindow("Drawing of C3-hela-cells.tif");
+run("Close All");
